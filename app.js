@@ -1,3 +1,6 @@
+
+// Global Variables
+
 //Global Variables
 var reset;
 var score = 0;
@@ -24,4 +27,3 @@ function resetQuiz(){
 
     
 };
-
