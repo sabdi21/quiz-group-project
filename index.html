@@ -8,9 +8,22 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Group Project</h1>
-
-    
+    <h1 id="quiz-title"></h1>
+    <main>
+        <content id="quiz">
+            <form id="name-input">
+                <input type="text" placeholder="Enter name please:">
+            </form>
+            <div id="question"></div>
+            <div id="answers"></div>
+            <div id="results"></div>
+        </content>
+        <nav id="quiz-nav">
+            <input id="start-btn" type="submit" value="START">
+            <button id="previous-btn">PREVIOUS</button >
+            <button id="next-btn">NEXT</button >
+        </nav>
+    </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="app.js"></script> 
 </body>
