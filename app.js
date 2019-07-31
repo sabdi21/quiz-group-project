@@ -20,7 +20,7 @@ function setTimer(){
 
 // START QUIZ LOAD
 function resetQuiz(){
-    $('#start-button').visibility = 'hidden';  
+    $("#start-button").hide();
 
     
 };
