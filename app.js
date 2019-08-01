@@ -66,7 +66,7 @@ function resetQuiz(){
     nextBtn.show();
     buttonClick.prop('value', 'Reset');
     currentQuestion = 0;
-
+    previousBtn.click(handlePrevClick);
     nextBtn.click(handleNextClick);
     displayQuestion();    
 };
@@ -91,23 +91,17 @@ function displayQuestion() {
 
     
 }
+function handlePrevClick(){
+    questions[currentQuestion].userAnswer = -1
+    currentQuestion--
+    displayQuestion()
+}
 
 function handleNextClick() {
-// <<<<<<< HEAD
-    // if (currentQuestion > questions.length) {
-    //    displayResults(); 
-    // }
-    // else {
-    //     currentQuestion++;
-    //     displayQuestion();
-    // }
-
-// =======
     if (questionAnswered) {
-// >>>>>>> 31e4a6e1249fd1ba88b413b5469b6731094c9090
-        currentQuestion++;
-        if (currentQuestion > 4) {
-
+        if (currentQuestion >= 4) {
+            questionsPane.empty()
+            answersPane.empty()
             displayResults();
 
         } else {
@@ -115,12 +109,11 @@ function handleNextClick() {
             displayQuestion();
             
         }      
-    }
-// <<<<<<< HEAD
-       
+    }  
 };
 
 function displayResults(){
+    questionsPane.empty()
     let orderedList = $("<ol></ol>").appendTo(resultsPane);
     for(let i = 0; i < questions.length; i++){
         let questionResult = `<li><div>Correct Answer: ${questions[i].answers[questions[i].correctAnswerIndex]}</div><div>Your Answer: ${questions[i].answers[questions[i].userAnswer]}</div>`;
