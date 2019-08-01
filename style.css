@@ -3,7 +3,7 @@ html, body{
     height: 100vh;
 }
 
-html, body, main, content, nav, form, div{
+html, body, main, content, nav, form, div, ol{
     margin: 0;
     padding: 0;
     display: flex;
@@ -48,5 +48,10 @@ nav{
     border: 2px solid black;
     border-radius: 5px;
 }
-
+.correct{
+    background-color: green;
+}
+.wrong{
+    background-color: red;
+}
 
