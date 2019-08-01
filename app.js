@@ -17,6 +17,26 @@ let questions = [{
     answers: ["Stark", "Tyrell", "Targaryen", "Baelish"],
     correctAnswerIndex: 3, 
     userAnswer: -1
+}, {
+    prompt: "Ayra's fighting style is called?",
+    answers: ["Wolf Wield", "Water Dancing", "Stinger", "Slashing Steel"],
+    correctAnswerIndex: 1, 
+    userAnswer: -1
+}, {
+    prompt: "Sandor Clegane is known as ...",
+    answers: ["The Beast", "The Kingslayer", "The Mountain", "The Hound"],
+    correctAnswerIndex: 3, 
+    userAnswer: -1
+}, {
+    prompt: "Bran Stark is paralyzed following a fall, who pushed him?",
+    answers: ["Tryon Lannister", "Jaime Lannister", "Cersei Lannister", "Joffrey Baratheon"],
+    correctAnswerIndex: 1, 
+    userAnswer: -1
+}, {
+    prompt: "According to Bran, \"chaos is ...\"",
+    answers: ["a staircase", "a ladder", "Inevitable", "a way of life"],
+    correctAnswerIndex: 1, 
+    userAnswer: -1
   }];
 
 const NUM_QUESTIONS = questions.length;
@@ -47,12 +67,15 @@ function resetQuiz(){
     buttonClick.prop('value', 'Reset');
     currentQuestion = 0;
 
+    nextBtn.click(handleNextClick);
     displayQuestion();    
 };
 
 // keep track of current question
 function displayQuestion() {
     questionAnswered= false;
+    questionsPane.empty();
+    answersPane.empty();
 
     questionsPane.append("<p>" + questions[currentQuestion].prompt + "</p>")
     console.log(answers);
@@ -63,20 +86,37 @@ function displayQuestion() {
     answersPane.click(function() {
         questions[currentQuestion].userAnswer = event.target.value;
         questionAnswered = true;
+        console.log("use answer;", questions[currentQuestion].userAnswer);
     })
 
-    nextBtn.click(handleNextClick);
+    
 }
 
 function handleNextClick() {
-    currentQuestion++
-    if (currentQuestion === questions.length) {
-       displayResults(); 
-    }
-    else {
+// <<<<<<< HEAD
+    // if (currentQuestion > questions.length) {
+    //    displayResults(); 
+    // }
+    // else {
+    //     currentQuestion++;
+    //     displayQuestion();
+    // }
+
+// =======
+    if (questionAnswered) {
+// >>>>>>> 31e4a6e1249fd1ba88b413b5469b6731094c9090
         currentQuestion++;
-        displayQuestion();
+        if (currentQuestion > 4) {
+
+            displayResults();
+
+        } else {
+            currentQuestion++;
+            displayQuestion();
+            
+        }      
     }
+// <<<<<<< HEAD
        
 };
 
@@ -96,4 +136,5 @@ function displayResults(){
     }
     resultsPane.show();
 }
+
 
