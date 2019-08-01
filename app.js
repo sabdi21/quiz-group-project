@@ -3,7 +3,7 @@
 var questionsPane = $('#question').hide();
 var answersPane = $('#answers').hide();
 // console.log(answersPane);
-var resultsPane = $('#resuls').hide();
+var resultsPane = $('#results').hide();
 var previousBtn = $('#previous-btn').hide();
 var nextBtn = $('#next-btn').hide();
 var currentQuestion = 0;
@@ -93,7 +93,18 @@ function displayQuestion() {
 }
 
 function handleNextClick() {
+// <<<<<<< HEAD
+    // if (currentQuestion > questions.length) {
+    //    displayResults(); 
+    // }
+    // else {
+    //     currentQuestion++;
+    //     displayQuestion();
+    // }
+
+// =======
     if (questionAnswered) {
+// >>>>>>> 31e4a6e1249fd1ba88b413b5469b6731094c9090
         currentQuestion++;
         if (currentQuestion > 4) {
 
@@ -105,8 +116,25 @@ function handleNextClick() {
             
         }      
     }
+// <<<<<<< HEAD
+       
 };
 
-function displayResults() {
-    console.log("We got to the end");
+function displayResults(){
+    let orderedList = $("<ol></ol>").appendTo(resultsPane);
+    for(let i = 0; i < questions.length; i++){
+        let questionResult = `<li><div>Correct Answer: ${questions[i].answers[questions[i].correctAnswerIndex]}</div><div>Your Answer: ${questions[i].answers[questions[i].userAnswer]}</div>`;
+
+        if(questions[i].answers[questions[i].correctAnswerIndex] === questions[i].answers[questions[i].userAnswer]){
+            questionResult += ` <div class="correct">You were correct!</div></li>`;
+        }
+        else {
+            questionResult += ` <div class="wrong">You were wrong!</div>
+                             </li>`;
+        }
+        orderedList.append(questionResult);
+    }
+    resultsPane.show();
 }
+
+
